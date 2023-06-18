@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import screens from "./src/screens.json"
 
 
 const Drawer=createDrawerNavigator();
@@ -20,19 +21,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} options={{
+        <Drawer.Screen name={screens.home} component={HomeScreen} options={{
           drawerLabel:"Início",
           drawerIcon({ size, color}) {
             return <Ionicons name="home" size={size} color={color} />;
           }
         }} />
-        <Drawer.Screen name="ListPost" component={ListPostScreen} options={{
+        <Drawer.Screen name={screens.listPost} component={ListPostScreen} options={{
           drawerLabel:"Listar posts",
           drawerIcon({size, color}) {
             return <FontAwesome5 name="list-alt" size={size} color={color} />;
           }
         }} />
-        <Drawer.Screen name="ViewPost" component={ViewPostScreen} options={{
+        <Drawer.Screen name={screens.viewPost} component={ViewPostScreen} options={{
           drawerLabel:"Ver post",
           drawerIcon({size, color}) {
             return (
@@ -44,7 +45,7 @@ export default function App() {
             );
           }
         }} />
-        <Drawer.Screen name="EditPost" component={EditPostScreen} options={{
+        <Drawer.Screen name={screens.editPost} component={EditPostScreen} options={{
           drawerLabel:"Editar post",
           drawerIcon({size, color}){
             return (
@@ -56,7 +57,7 @@ export default function App() {
             );
           }
         }} />
-        <Drawer.Screen name="CreatePost" component={CreatePostScreen} options={{
+        <Drawer.Screen name={screens.createPost} component={CreatePostScreen} options={{
           drawerLabel:"Criar post",
           drawerIcon({size, color}){
             return <MaterialIcons name="post-add" size={size} color={color} />;

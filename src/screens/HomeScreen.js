@@ -1,5 +1,6 @@
 import { View, Text, Button } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import screens from "../screens.json"
 
 export function HomeScreen({navigation}) {
   return (
@@ -7,7 +8,7 @@ export function HomeScreen({navigation}) {
       <Button
         title="Ver posts"
         onPress={() => {
-          navigation.navigate("ListPost");
+          navigation.navigate(screens.listPost);
         }}
       />
       <Text>HomeScreen</Text>
