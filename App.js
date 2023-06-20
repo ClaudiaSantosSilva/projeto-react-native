@@ -1,4 +1,5 @@
 import "react-native-gesture-handler";
+import { RootSiblingParent } from "react-native-root-siblings"
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +20,7 @@ const Drawer=createDrawerNavigator();
 
 export default function App() {
   return (
+    <RootSiblingParent>
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name={screens.home} component={HomeScreen} options={{
@@ -65,5 +67,6 @@ export default function App() {
         }} />
       </Drawer.Navigator>
     </NavigationContainer>
+    </RootSiblingParent>
   );
 }
