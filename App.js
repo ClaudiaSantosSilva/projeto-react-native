@@ -10,6 +10,7 @@ import { ListPostsScreen } from "./src/screens/ListPostsScreen";
 import { ViewPostScreen } from "./src/screens/ViewPostScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+//import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -47,6 +48,9 @@ export default function App() {
         <Drawer.Screen name={screens.viewPost} component={ViewPostScreen} options={{
           headerTitle: texts.viewPostLabel,
           drawerLabel: texts.viewPostLabel,
+          drawerItemStyle: {
+            height:0,
+          },
           drawerIcon({size, color}) {
             return (
               <MaterialCommunityIcons
@@ -60,6 +64,9 @@ export default function App() {
         <Drawer.Screen name={screens.editPost} component={EditPostScreen} options={{
           headerTitle: texts.editPostLabel,
           drawerLabel: texts.editPostLabel,
+          drawerItemStyle:{
+            height:0,
+          },
           drawerIcon({size, color}){
             return (
               <MaterialCommunityIcons
@@ -71,7 +78,6 @@ export default function App() {
           }
         }} />
         <Drawer.Screen name={screens.createPost} component={CreatePostScreen} options={{
-          
           headerTitle: texts.createPostLabel,
           drawerLabel: texts.createPostLabel,
           drawerIcon({size, color}){

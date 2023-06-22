@@ -21,6 +21,13 @@ line-height: 30px;
 text-align: justify;
 `;
 
+const ContainerCard=styled(Card)`
+display:flex;
+flex-direction:column;
+gap:4px;
+
+`
+
 export function ViewPostScreen({ navigation, route }){
 const postId=route.params.id;
 const[post, setPost]=useState(initialPost)
@@ -41,12 +48,12 @@ async function loadPost(){
 }
 
    return (
-     <Card>
+     <ContainerCard>
        <Text>#{post.id}</Text>
        <Text>{postCreatedAt}</Text>
        <Title>{post.title}</Title>
        <Subtitle>{post.subtitle}</Subtitle>
        <Content>{post.content}</Content>
-     </Card>
+     </ContainerCard>
    );
 }
