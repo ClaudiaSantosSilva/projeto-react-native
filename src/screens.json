@@ -3,5 +3,5 @@
     "viewPost":"ViewPost",
     "createPost":"CreatePost",
     "editPost":"EditPost",
-    "listPost":"ListPost"
+    "listPosts":"listPosts"
 }

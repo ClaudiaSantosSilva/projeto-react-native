@@ -8,7 +8,7 @@ export function HomeScreen({navigation}) {
       <Button
         title="Ver posts"
         onPress={() => {
-          navigation.navigate(screens.listPost);
+          navigation.navigate(screens.listPosts);
         }}
       />
       <Text>HomeScreen</Text>

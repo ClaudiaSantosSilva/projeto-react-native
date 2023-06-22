@@ -3,23 +3,17 @@ import { useState, useEffect } from "react"
 import { axiosApi } from "../axiosApi";
 import { PostItem } from "../components/PostItem" 
 import { Card } from "../components/Card"
+import Toast from "react-native-root-toast";
+import screens from "../screens.json"
 
-const initialPostList={
+const initialPostsList={
   count:0,
   notepads:[],
 }
 
-export function ListPostScreen({navigation, route}) {
-  const [postList, setPostList]= useState(initialPostList)
+export function ListPostsScreen({navigation, route}) {
+  const [postsList, setPostsList]= useState(initialPostsList)
 
-  async function loadPosts(){
-    const response= await axiosApi.get("/notepads")
-    setPostList(response.data)
-  }
-
-  function onPressPostItem(item){
-
-  }
 
   useEffect(()=>{
     const unsubscribe = navigation.addListener("focus", ()=>{
@@ -29,10 +23,21 @@ export function ListPostScreen({navigation, route}) {
     return unsubscribe;
   } ,[])
 
+async function loadPosts() {
+  const response = await axiosApi.get("/notepads");
+  setPostsList(response.data);
+}
+
+ function onPressPostItem({ id }) {
+   navigation.navigate(screens.viewPost, {
+     id,
+   });
+ }
+
   return (
     
     <FlatList 
-    data={postList.notepads} 
+    data={postsList.notepads} 
     renderItem={({ item })=> (
       <Card>
       <PostItem title={item.title} subtitle={item.subtitle} onPress={()=> onPressPostItem (item)} />

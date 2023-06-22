@@ -1,16 +1,7 @@
 import { Text, View, Pressable, TouchableOpacity } from "react-native"
 import styled from "styled-components/native"
-
-
-const Title = styled.Text`
-font-size: 20px;
-font-weight: bold;
-`;
-
-const Subtitle = styled.Text`
-font-size:16px;
-color:#444;
-`;
+import { Title } from "./Title"
+import { Subtitle } from "./Subtitle"
 
 const Container= styled.View`
 padding-horizontal: 12px;
