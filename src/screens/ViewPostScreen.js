@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components/native";
 import { axiosApi } from "../axiosApi";
-import { View, Text } from "react-native"
+import { View, Text, ImageBackground } from "react-native"
 import { Card } from "../components/Card"
 import Toast from "react-native-root-toast";
 import { Title } from "../components/Title"
 import { Subtitle } from "../components/Subtitle";
+
+const backgroundImage=require(`../../assets/airplanes-pattern.webp`)
 
 const initialPost={
   id:0,
@@ -25,8 +27,7 @@ const ContainerCard=styled(Card)`
 display:flex;
 flex-direction:column;
 gap:4px;
-
-`
+`;
 
 export function ViewPostScreen({ navigation, route }){
 const postId=route.params.id;
@@ -48,6 +49,14 @@ async function loadPost(){
 }
 
    return (
+    <View style={{flex:1,}}>
+      <ImageBackground source={backgroundImage} 
+      resizeMode="cover"
+      style={{
+        flex:1
+        //width:"100%",
+        //height:"50%",        
+      }} >
      <ContainerCard>
        <Text>#{post.id}</Text>
        <Text>{postCreatedAt}</Text>
@@ -55,5 +64,7 @@ async function loadPost(){
        <Subtitle>{post.subtitle}</Subtitle>
        <Content>{post.content}</Content>
      </ContainerCard>
+     </ImageBackground>
+     </View>
    );
 }
