@@ -7,6 +7,8 @@ import Toast from "react-native-root-toast";
 import { Title } from "../components/Title"
 import { Subtitle } from "../components/Subtitle";
 
+
+// @ts-ignore 
 const backgroundImage=require(`../../assets/airplanes-pattern.webp`)
 
 const initialPost={
@@ -16,6 +18,14 @@ const initialPost={
   content:"",
   created_at:"",
 }
+
+const Container= styled.View`
+flex:1;
+`;
+
+const ImageBackgroundFullScreen= styled.ImageBackground`
+flex:1;
+`;
 
 const Content=styled.Text`
 font-size: 20px;
@@ -49,14 +59,12 @@ async function loadPost(){
 }
 
    return (
-    <View style={{flex:1,}}>
-      <ImageBackground source={backgroundImage} 
+    <Container>
+      <ImageBackgroundFullScreen source={backgroundImage} 
       resizeMode="cover"
-      style={{
-        flex:1
         //width:"100%",
         //height:"50%",        
-      }} >
+      >
      <ContainerCard>
        <Text>#{post.id}</Text>
        <Text>{postCreatedAt}</Text>
@@ -64,7 +72,7 @@ async function loadPost(){
        <Subtitle>{post.subtitle}</Subtitle>
        <Content>{post.content}</Content>
      </ContainerCard>
-     </ImageBackground>
-     </View>
+     </ImageBackgroundFullScreen>
+     </Container>
    );
 }
