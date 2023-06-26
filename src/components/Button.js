@@ -12,8 +12,8 @@ const ButtonText = styled.Text`
   font-weight: bold;
 `;
 
-export function Button ({children, onPress}){
-    return <ButtonContainer onPress={onPress}>
+export function Button ({children, onPress, style}){
+    return <ButtonContainer onPress={onPress} style={style}>
         <ButtonText>{children}</ButtonText>
     </ButtonContainer>
 }

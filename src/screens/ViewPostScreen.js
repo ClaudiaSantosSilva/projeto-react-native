@@ -1,15 +1,38 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components/native";
 import { axiosApi } from "../axiosApi";
-import { View, Text, ImageBackground } from "react-native"
+import { View, Text, ImageBackground, StyleSheet } from "react-native"
 import { Card } from "../components/Card"
 import Toast from "react-native-root-toast";
+import screens from "../screens.json"
 import { Title } from "../components/Title"
 import { Subtitle } from "../components/Subtitle";
+import { Button } from "../components/Button";
+import { ListPostsScreen } from "./ListPostsScreen";
 
 
 // @ts-ignore 
 const backgroundImage=require(`../../assets/airplanes-pattern.webp`)
+
+const texts ={
+  deleteButtonLabel: "Deletar",
+  editButtonLabel: "Editar",
+  deleteSuccessMessage: "O post foi deletado com sucesso!"
+}
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    gap: 14,
+    justifyContent: "center",
+    marginTop: 8,
+  },
+  deleteBox: {
+    backgroundColor: "#d63031",
+  },
+  editBox: {
+    backgroundColor: "#fab1a0",
+  },
+});
 
 const initialPost={
   id:0,
@@ -55,7 +78,18 @@ useEffect(()=>{
 async function loadPost(){
   const response= await axiosApi.get (`/notepads/${postId}`)
   setPost(response.data)
+}
 
+async function onDelete() {
+  const response= await axiosApi.delete ('/notepads/${notepadId}')
+  Toast.show(texts.deleteSuccessMessage)
+  navigation.navigate(screens.listPosts)
+}
+
+async function onEdit() {
+  navigation.navigate(screens.editPost, {
+    id: postId,
+  });
 }
 
    return (
@@ -71,6 +105,10 @@ async function loadPost(){
        <Title>{post.title}</Title>
        <Subtitle>{post.subtitle}</Subtitle>
        <Content>{post.content}</Content>
+       <View style={styles.container}>
+       <Button style={styles.deleteBox} onPress={onDelete}>{texts.deleteButtonLabel}</Button>
+       <Button style={styles.editBox} onPress={onEdit}>{texts.editButtonLabel}</Button>
+       </View>
      </ContainerCard>
      </ImageBackgroundFullScreen>
      </Container>
