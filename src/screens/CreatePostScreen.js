@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 import { Button } from "../components/Button";
 import { useState } from "react";
 import styled from "styled-components/native";
@@ -26,6 +26,17 @@ const TextField = styled.TextInput`
   border-color: #0984e3;
 `;
 
+const styles= StyleSheet.create({
+      containerButton:{
+        display:"flex",
+        alignItems: "center",
+      },
+      buttonStyle:{
+        width: 220,
+      } 
+  
+})
+
 export function CreatePostScreen({navigation}) {
 const [title, setTitle] = useState ("");
 const [subtitle, setSubtitle] = useState("");
@@ -47,9 +58,11 @@ async function onSubmit (){
       <TextField placeholder={texts.titlePlaceholder} onChangeText={setTitle} />
       <TextField placeholder= {texts.subtitlePlaceholder} onChangeText={setSubtitle} />
       <TextField placeholder = {texts.contentPlaceholder} multiline numberOfLines={4} onChangeText={setContent} />
-      <Button onPress={onSubmit}>
+      <View style={styles.containerButton}>
+      <Button style={styles.buttonStyle} onPress={onSubmit}>
         Enviar
       </Button>
+      </View>
     </Container>
   );
 }

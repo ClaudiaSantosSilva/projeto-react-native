@@ -81,7 +81,7 @@ async function loadPost(){
 }
 
 async function onDelete() {
-  const response= await axiosApi.delete ('/notepads/${notepadId}')
+  const response= await axiosApi.delete (`/notepads/${postId}`)
   Toast.show(texts.deleteSuccessMessage)
   navigation.navigate(screens.listPosts)
 }
