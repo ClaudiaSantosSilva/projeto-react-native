@@ -29,14 +29,14 @@ flex:1;
 
 const Content=styled.Text`
 font-size: 20px;
-line-height: 30px;
+line-height: 24px;
 text-align: justify;
 `;
 
 const ContainerCard=styled(Card)`
 display:flex;
 flex-direction:column;
-gap:4px;
+gap:6px;
 `;
 
 export function ViewPostScreen({ navigation, route }){
