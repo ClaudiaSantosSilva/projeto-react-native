@@ -30,7 +30,7 @@ export default function App() {
   return (
     <RootSiblingParent>
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName= {screens.home}>
+      <Drawer.Navigator initialRouteName= {screens.home} backBehavior="history">
         <Drawer.Screen name={screens.home} component={HomeScreen} options={{
           headerTitle: texts.homeLabel,
           drawerLabel:texts.homeLabel,

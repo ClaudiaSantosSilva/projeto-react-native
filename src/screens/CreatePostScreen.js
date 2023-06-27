@@ -1,5 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { Button } from "../components/Button";
+import { Container } from "../components/Container"
+import { TextField } from "../components/TextField";
 import { useState } from "react";
 import styled from "styled-components/native";
 import Toast from "react-native-root-toast";
@@ -12,19 +14,6 @@ const texts={
   contentPlaceholder: "Digite o conteúdo",
   submitSuccess: "Post criado com sucesso!",
 }
-
-const Container= styled.View`
-margin: 14px;
-gap: 16px;
-`;
-
-const TextField = styled.TextInput`
-  background-color: white;
-  padding: 10px;
-  border-radius: 10px;
-  border-width: 2px;
-  border-color: #0984e3;
-`;
 
 const styles= StyleSheet.create({
       containerButton:{
