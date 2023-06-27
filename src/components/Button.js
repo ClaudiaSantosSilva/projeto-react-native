@@ -1,4 +1,5 @@
 import styled from "styled-components/native"
+import { ActivityIndicator } from "react-native";
 
 const ButtonContainer = styled.TouchableOpacity`
   background-color: #0984e3;
@@ -9,12 +10,22 @@ const ButtonContainer = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   color: white;
+  font-size:16px;
   text-align: center;
   font-weight: bold;
 `;
 
-export function Button ({children, onPress, style}){
-    return <ButtonContainer onPress={onPress} style={style}>
-        <ButtonText>{children}</ButtonText>
+//const Spinner = styled.ActivityIndicator`
+  //color: white;
+  //font-size: 16px;
+  //`;
+
+
+export function Button ({children, onPress, style={}, isLoading=false }) {
+    return ( 
+    <ButtonContainer onPress={onPress} style={style} disabled={isLoading}>
+      {isLoading && <ActivityIndicator size={24} color="white" />}
+        {!isLoading && <ButtonText>{children}</ButtonText>}
     </ButtonContainer>
+    )
 }

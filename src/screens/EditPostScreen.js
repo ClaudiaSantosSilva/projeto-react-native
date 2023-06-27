@@ -2,10 +2,12 @@ import { View, Text, StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
 import Toast from "react-native-root-toast";
 import { axiosApi } from "../axiosApi";
+import { useGlobalStore } from "../useGlobalStore";
 import { TextField } from "../components/TextField";
 import { Container } from "../components/Container";
 import { Button } from "../components/Button";
 import screens from "../screens.json"
+
 
 const texts={
   submitButtonLabel: "Atualizar",
@@ -24,16 +26,18 @@ const styles = StyleSheet.create({
 
 export function EditPostScreen({navigation, route}) {
   const postId= route.params.id;
+  const isLoading = useGlobalStore(state => state.isLoading);
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
-
+  
   async function loadPost (){
     const response = await axiosApi.get(`/notepads/${postId}`)
     const post = response.data;
     setTitle(post.title);
     setSubtitle(post.subtitle);
     setContent(post.content);
+    
   }
 
   useEffect (()=> {
@@ -58,7 +62,7 @@ export function EditPostScreen({navigation, route}) {
       <TextField value={subtitle} onChangeText={setSubtitle} />
       <TextField value={content} onChangeText={setContent} />
       <View style={styles.containerButton}>
-      <Button onPress={onSubmit} style={styles.buttonStyle}>{texts.submitButtonLabel}</Button>
+      <Button isLoading={isLoading} onPress={onSubmit} style={styles.buttonStyle}>{texts.submitButtonLabel}</Button>
       </View>
     </Container>
   );
