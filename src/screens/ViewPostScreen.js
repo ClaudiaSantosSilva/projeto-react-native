@@ -42,7 +42,7 @@ const initialPost={
   created_at:"",
 }
 
-const Container= styled.View`
+const Container= styled.ScrollView`
 flex:1;
 `;
 
