@@ -14,14 +14,6 @@ const initialPostsList = {
 
 
 export function HomeScreen({navigation}) {
-async function loadPosts() {
-  const response = await axiosApi.get("/notepads", {
-    params:{
-      limit: Infinity
-    }
-  });
-  setPostsList(response.data);
-}
 
   async function loadGeolocation(){
   const response = await Location.requestForegroundPermissionsAsync();
@@ -29,21 +21,15 @@ async function loadPosts() {
      
   }
 
-}
 
 useEffect(()=> {
   loadGeolocation();
-  const unsubscribe = navigation.addListener("focus", () => {
-    loadPosts();
-  });
-
-  return unsubscribe;
-}, []);
+  
+});
 
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <MapView
-        
         showsUserLocation
         style={{ width: "100%", height: "100%" }}
         provider={PROVIDER_GOOGLE}
