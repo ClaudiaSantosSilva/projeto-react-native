@@ -31,9 +31,10 @@ useEffect(()=> {
     <View style={{ width: "100%", height: "100%" }}>
       <MapView
         showsUserLocation
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "80%" }}
         provider={PROVIDER_GOOGLE}
       />
+      <Text style={{fontSize: 18, marginTop:16, marginHorizontal:10, textAlign:"center"}}>Escolha o ponto no mapa e conheça mais um pouco sobre esse lugar ou selecione um ponto e adicione seus comentários. </Text>
     </View>
   );
 }
