@@ -30,6 +30,9 @@ export function EditPostScreen({navigation, route}) {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
+  const [isTitleFocused, setIsTitleFocused] = useState(false);
+  const [isSubtitleFocused, setIsSubtitleFocused] = useState(false);
+  const [isContentFocused, setIsContentFocused] = useState(false);
   
   async function loadPost (){
     const response = await axiosApi.get(`/notepads/${postId}`)
@@ -58,9 +61,9 @@ export function EditPostScreen({navigation, route}) {
 
   return (
     <Container>
-      <TextField value={title} onChangeText={setTitle} />
-      <TextField value={subtitle} onChangeText={setSubtitle} />
-      <TextField value={content} onChangeText={setContent} />
+      <TextField isFocused={isTitleFocused} value={title} onChangeText={setTitle} onFocus={()=> setIsTitleFocused(true)} onBlur={()=> setIsTitleFocused(false)} />
+      <TextField isFocused={isSubtitleFocused} value={subtitle} onChangeText={setSubtitle} onFocus={()=> setIsSubtitleFocused(true)} onBlur={()=> setIsSubtitleFocused(false)} />
+      <TextField isFocused= {isContentFocused} value={content} onChangeText={setContent} onFocus={()=> setIsContentFocused(true)} onBlur={()=> setIsContentFocused(false)}/>
       <View style={styles.containerButton}>
       <Button isLoading={isLoading} onPress={onSubmit} style={styles.buttonStyle}>{texts.submitButtonLabel}</Button>
       </View>
