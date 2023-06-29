@@ -20,7 +20,7 @@ const texts ={
   deleteSuccessMessage: "O post foi deletado com sucesso!"
 }
 const styles = StyleSheet.create({
-  container: {
+  containerBox: {
     flexDirection: "row",
     gap: 14,
     justifyContent: "center",
@@ -51,7 +51,7 @@ flex:1;
 `;
 
 const Content=styled.Text`
-font-size: 20px;
+font-size: 16px;
 line-height: 24px;
 text-align: justify;
 `;
@@ -93,24 +93,30 @@ async function onEdit() {
 }
 
    return (
-    <Container>
-      <ImageBackgroundFullScreen source={backgroundImage} 
-      resizeMode="cover"
-        //width:"100%",
-        //height:"50%",        
-      >
-     <ContainerCard>
-       <Text>#{post.id}</Text>
-       <Text>{postCreatedAt}</Text>
-       <Title>{post.title}</Title>
-       <Subtitle>{post.subtitle}</Subtitle>
-       <Content>{post.content}</Content>
-       <View style={styles.container}>
-       <Button style={styles.deleteBox} onPress={onDelete}>{texts.deleteButtonLabel}</Button>
-       <Button style={styles.editBox} onPress={onEdit}>{texts.editButtonLabel}</Button>
-       </View>
-     </ContainerCard>
+     <ImageBackgroundFullScreen
+       source={backgroundImage}
+       resizeMode="cover"
+       //width:"100%",
+       //height:"50%",
+     >
+       <Container>
+         <ContainerCard>
+           <Text>#{post.id}</Text>
+           <Text>{postCreatedAt}</Text>
+           <Title>{post.title}</Title>
+           <Subtitle>{post.subtitle}</Subtitle>
+           <Content>{post.content}</Content>
+           <View style={styles.containerBox}>
+             <Button style={styles.deleteBox} onPress={onDelete}>
+               {texts.deleteButtonLabel}
+             </Button>
+             <Button style={styles.editBox} onPress={onEdit}>
+               {texts.editButtonLabel}
+             </Button>
+           </View>
+           
+         </ContainerCard>
+       </Container>
      </ImageBackgroundFullScreen>
-     </Container>
    );
 }
