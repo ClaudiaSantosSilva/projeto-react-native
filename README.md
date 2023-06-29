@@ -1,0 +1,1 @@
+Projeto desenvolvido durante a disciplina de React Native no "Bootcamp Front-end com React" do Instituto Infnet.

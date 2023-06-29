@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
   editBox: {
     backgroundColor: "#fab1a0",
   },
+  coordenadas: {
+    color: "#808e9b",
+  },
 });
 
 const initialPost={
@@ -101,11 +104,18 @@ async function onEdit() {
      >
        <Container>
          <ContainerCard>
-           <Text>#{post.id}</Text>
+           <Text style={styles.coordenadas}>#{post.id}</Text>
            <Text>{postCreatedAt}</Text>
            <Title>{post.title}</Title>
            <Subtitle>{post.subtitle}</Subtitle>
            <Content>{post.content}</Content>
+           {post.latitude && post.longitude && (
+             <>
+               <Text style={styles.coordenadas}>Latitude: {post.latitude}</Text>
+               <Text style={styles.coordenadas}>Longitude: {post.longitude}
+               </Text>
+             </>
+           )}
            <View style={styles.containerBox}>
              <Button style={styles.deleteBox} onPress={onDelete}>
                {texts.deleteButtonLabel}
@@ -114,7 +124,6 @@ async function onEdit() {
                {texts.editButtonLabel}
              </Button>
            </View>
-           
          </ContainerCard>
        </Container>
      </ImageBackgroundFullScreen>

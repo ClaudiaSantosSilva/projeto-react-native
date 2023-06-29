@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container"
 import { TextField } from "../components/TextField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import Toast from "react-native-root-toast";
 import { axiosApi } from "../axiosApi";
@@ -26,31 +26,59 @@ const styles= StyleSheet.create({
   
 })
 
-export function CreatePostScreen({navigation}) {
+export function CreatePostScreen({navigation, route}) {
 const [title, setTitle] = useState ("");
 const [subtitle, setSubtitle] = useState("");
 const [content, setContent] = useState("");
+const [coords, setCoords] = useState({ latitude:undefined, longitude:undefined });
+
+const latitude = coords.latitude;
+const longitude = coords.longitude;
 
 async function onSubmit (){
   const response = await axiosApi.post("/notepads",{
     title,
     subtitle,
     content,
+    latitude,
+    longitude,
   })
 
   Toast.show (texts.submitSuccess);
   navigation.navigate(screens.listPosts)
 }
 
-  return( 
+function loadGeolocationParams() {
+  const coords = route.params.coords ?? {};
+  setCoords(coords);
+}
+
+useEffect(()=>{
+  const unsubscribe = navigation.addListener('focus' , ()=>{
+    loadGeolocationParams();
+  })
+  return unsubscribe;
+},[route.params]);
+
+  return (
     <Container>
       <TextField placeholder={texts.titlePlaceholder} onChangeText={setTitle} />
-      <TextField placeholder= {texts.subtitlePlaceholder} onChangeText={setSubtitle} />
-      <TextField placeholder = {texts.contentPlaceholder} multiline numberOfLines={4} onChangeText={setContent} />
+      <TextField
+        placeholder={texts.subtitlePlaceholder}
+        onChangeText={setSubtitle}
+      />
+      <TextField
+        placeholder={texts.contentPlaceholder}
+        multiline
+        numberOfLines={4}
+        onChangeText={setContent}
+      />
+      {latitude && <TextField value={latitude.toString()} editable={false} />}
+      {longitude && <TextField value={longitude.toString()} editable={false} />}
       <View style={styles.containerButton}>
-      <Button style={styles.buttonStyle} onPress={onSubmit}>
-        Enviar
-      </Button>
+        <Button style={styles.buttonStyle} onPress={onSubmit}>
+          Enviar
+        </Button>
       </View>
     </Container>
   );
