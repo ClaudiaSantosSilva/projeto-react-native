@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   containerInformation:{
     flexDirection: "row",
     justifyContent:"space-between",
+    marginBottom: 12,
   },
   
 });
@@ -113,7 +114,7 @@ async function onEdit() {
        //height:"50%",
      >
        <Container>
-         <ContainerCard>
+        <ContainerCard>
            <View style={styles.containerInformation}>
             <View>
              <Text style={styles.coordenadas}>#{post.id}</Text>
@@ -143,7 +144,7 @@ async function onEdit() {
              </Button>
            </View>
          </ContainerCard>
-       </Container>
+        </Container>
      </ImageBackgroundFullScreen>
    );
 }

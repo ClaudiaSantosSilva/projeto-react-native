@@ -12,12 +12,14 @@ import screens from "../screens.json"
 const texts={
   submitButtonLabel: "Atualizar",
   updatePostSuccess: "O post foi atualizado com sucesso!",
+  returnButtonLabel: "Voltar",
 }
 
 const styles = StyleSheet.create({
   containerButton: {
     display: "flex",
     alignItems: "center",
+    gap: 14,
   },
   buttonStyle: {
     width: 220,
@@ -58,14 +60,47 @@ export function EditPostScreen({navigation, route}) {
     navigation.goBack()
   }
 
+  function onReturn() {
+    navigation.goBack ();
+  }
 
   return (
     <Container>
-      <TextField isFocused={isTitleFocused} value={title} onChangeText={setTitle} onFocus={()=> setIsTitleFocused(true)} onBlur={()=> setIsTitleFocused(false)} />
-      <TextField isFocused={isSubtitleFocused} value={subtitle} onChangeText={setSubtitle} onFocus={()=> setIsSubtitleFocused(true)} onBlur={()=> setIsSubtitleFocused(false)} />
-      <TextField isFocused= {isContentFocused} value={content} onChangeText={setContent} onFocus={()=> setIsContentFocused(true)} onBlur={()=> setIsContentFocused(false)}/>
+      <TextField
+        isFocused={isTitleFocused}
+        value={title}
+        onChangeText={setTitle}
+        onFocus={() => setIsTitleFocused(true)}
+        onBlur={() => setIsTitleFocused(false)}
+      />
+      <TextField
+        isFocused={isSubtitleFocused}
+        value={subtitle}
+        onChangeText={setSubtitle}
+        onFocus={() => setIsSubtitleFocused(true)}
+        onBlur={() => setIsSubtitleFocused(false)}
+      />
+      <TextField
+        isFocused={isContentFocused}
+        value={content}
+        onChangeText={setContent}
+        onFocus={() => setIsContentFocused(true)}
+        onBlur={() => setIsContentFocused(false)}
+      />
       <View style={styles.containerButton}>
-      <Button isLoading={isLoading} onPress={onSubmit} style={styles.buttonStyle}>{texts.submitButtonLabel}</Button>
+        <Button
+          isLoading={isLoading}
+          onPress={onSubmit}
+          style={styles.buttonStyle}
+        >
+          {texts.submitButtonLabel}
+        </Button>
+        <Button
+          onPress={onReturn}
+          style={styles.buttonStyle}
+        >
+          {texts.returnButtonLabel}
+        </Button>
       </View>
     </Container>
   );
