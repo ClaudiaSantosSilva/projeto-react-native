@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components/native";
 import { axiosApi } from "../axiosApi";
-import { View, Text, ImageBackground, StyleSheet } from "react-native"
+import { View, Text, ImageBackground, StyleSheet, } from "react-native";
 import { Card } from "../components/Card"
 import Toast from "react-native-root-toast";
 import screens from "../screens.json"
@@ -17,7 +17,8 @@ const backgroundImage=require(`../../assets/airplanes-pattern.webp`)
 const texts ={
   deleteButtonLabel: "Deletar",
   editButtonLabel: "Editar",
-  deleteSuccessMessage: "O post foi deletado com sucesso!"
+  deleteSuccessMessage: "O post foi deletado com sucesso!",
+  returnButton: "Voltar",
 }
 const styles = StyleSheet.create({
   containerBox: {
@@ -35,6 +36,11 @@ const styles = StyleSheet.create({
   coordenadas: {
     color: "#808e9b",
   },
+  containerInformation:{
+    flexDirection: "row",
+    justifyContent:"space-between",
+  },
+  
 });
 
 const initialPost={
@@ -83,6 +89,10 @@ async function loadPost(){
   setPost(response.data)
 }
 
+async function onReturn(){
+  navigation.navigate(screens.listPosts)
+}
+
 async function onDelete() {
   const response= await axiosApi.delete (`/notepads/${postId}`)
   Toast.show(texts.deleteSuccessMessage)
@@ -104,15 +114,23 @@ async function onEdit() {
      >
        <Container>
          <ContainerCard>
-           <Text style={styles.coordenadas}>#{post.id}</Text>
-           <Text>{postCreatedAt}</Text>
+           <View style={styles.containerInformation}>
+            <View>
+             <Text style={styles.coordenadas}>#{post.id}</Text>
+             <Text>{postCreatedAt}</Text>
+            </View> 
+            <View>
+               <Button onPress={onReturn}>{texts.returnButton}</Button>
+            </View>
+           </View>
            <Title>{post.title}</Title>
            <Subtitle>{post.subtitle}</Subtitle>
            <Content>{post.content}</Content>
            {post.latitude && post.longitude && (
              <>
                <Text style={styles.coordenadas}>Latitude: {post.latitude}</Text>
-               <Text style={styles.coordenadas}>Longitude: {post.longitude}
+               <Text style={styles.coordenadas}>
+                 Longitude: {post.longitude}
                </Text>
              </>
            )}
