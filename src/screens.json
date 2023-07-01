@@ -2,6 +2,7 @@
     "home":"Home",
     "viewPost":"ViewPost",
     "createPost":"CreatePost",
+    "addSimplePost":"AddSimplePost",
     "editPost":"EditPost",
-    "listPosts":"listPosts"
+    "listPosts":"ListPosts"
 }
