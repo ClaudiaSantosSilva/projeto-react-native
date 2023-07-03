@@ -1,8 +1,6 @@
-import { View, Text, Button } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { View, Text } from "react-native";
 import MapView, {PROVIDER_GOOGLE, MapMarker } from "react-native-maps"
 import * as Location from "expo-location"
-import Toast from "react-native-root-toast"
 import screens from "../screens.json"
 import { useEffect, useState } from "react"
 import { axiosApi } from "../axiosApi";

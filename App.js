@@ -1,7 +1,5 @@
 import "react-native-gesture-handler";
 import { RootSiblingParent } from "react-native-root-siblings"
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { CreatePostScreen } from "./src/screens/CreatePostScreen";
 import { EditPostScreen } from "./src/screens/EditPostScreen";

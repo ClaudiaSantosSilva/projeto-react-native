@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
 import Toast from "react-native-root-toast";
 import { axiosApi } from "../axiosApi";
@@ -6,7 +6,6 @@ import { useGlobalStore } from "../useGlobalStore";
 import { TextField } from "../components/TextField";
 import { Container } from "../components/Container";
 import { Button } from "../components/Button";
-import screens from "../screens.json"
 
 
 const texts={

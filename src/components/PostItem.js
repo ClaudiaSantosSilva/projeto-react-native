@@ -1,4 +1,4 @@
-import { Text, View, Pressable, TouchableOpacity } from "react-native"
+import { TouchableOpacity } from "react-native"
 import styled from "styled-components/native"
 import { Title } from "./Title"
 import { Subtitle } from "./Subtitle"
@@ -6,8 +6,6 @@ import { Subtitle } from "./Subtitle"
 const Container= styled.View`
 padding-horizontal: 12px;
 padding-vertical: 6px;
-//border-bottom-width: 1px;
-//border-bottom-color:#aaa;
 `;
 
 export function PostItem({title, subtitle, onPress}){

@@ -1,9 +1,8 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container"
 import { TextField } from "../components/TextField";
-import { useState, useEffect } from "react";
-import styled from "styled-components/native";
+import { useState, useEffect } from "react"
 import Toast from "react-native-root-toast";
 import { axiosApi } from "../axiosApi";
 import screens from "../screens.json"
@@ -84,9 +83,4 @@ useEffect(()=>{
   );
 }
 
-//const styles= StyleSheet.create({
-  //textField:{
-    //fontSize: 18,
-    //lineHeight: 18,
-  //}
-//})
+

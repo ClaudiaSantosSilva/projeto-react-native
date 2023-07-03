@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components/native";
 import { axiosApi } from "../axiosApi";
-import { View, Text, ImageBackground, StyleSheet, } from "react-native";
+import { View, Text, StyleSheet, } from "react-native";
 import { Card } from "../components/Card"
 import Toast from "react-native-root-toast";
 import screens from "../screens.json"
 import { Title } from "../components/Title"
 import { Subtitle } from "../components/Subtitle";
 import { Button } from "../components/Button";
-import { ListPostsScreen } from "./ListPostsScreen";
 
 
 // @ts-ignore 
@@ -110,9 +109,7 @@ async function onEdit() {
      <ImageBackgroundFullScreen
        source={backgroundImage}
        resizeMode="cover"
-       //width:"100%",
-       //height:"50%",
-     >
+      >
        <Container>
         <ContainerCard>
            <View style={styles.containerInformation}>

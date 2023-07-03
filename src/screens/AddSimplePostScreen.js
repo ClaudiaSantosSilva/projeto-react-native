@@ -1,8 +1,7 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 import { TextField } from "../components/TextField";
-import { useState } from "react";
 import styled from "styled-components/native";
 import Toast from "react-native-root-toast";
 import { Formik } from "formik";
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     color: "#f53b57",
+    marginLeft: 16,
   },
 });
 
@@ -41,16 +41,7 @@ const ErrorMessage = styled.Text`
 `;
 
 export function AddSimplePostScreen({ navigation, route }) {
-  //const [title, setTitle] = useState("");
-  //const [subtitle, setSubtitle] = useState("");
-  //const [content, setContent] = useState("");
-
-  {/*const clearInputs= () => {
-    setTitle("");
-    setSubtitle("");
-    setContent("");
-  };*/}
- 
+   
   async function onSubmit({title, subtitle, content}, {resetForm}) {
     const response = await axiosApi.post("/notepads", {
       title,
@@ -63,8 +54,6 @@ export function AddSimplePostScreen({ navigation, route }) {
     navigation.navigate(screens.listPosts);
     }
 
-  
-
   return (
     <Formik
       validationSchema={postSchema}
@@ -76,7 +65,6 @@ export function AddSimplePostScreen({ navigation, route }) {
           <TextField
             value={values.title}
             placeholder={texts.titlePlaceholder}
-            //onChangeText={setTitle}
             onChangeText={handleChange("title")}
             onBlur={handleBlur("title")}
           />
@@ -88,7 +76,6 @@ export function AddSimplePostScreen({ navigation, route }) {
           <TextField
             value={values.subtitle}
             placeholder={texts.subtitlePlaceholder}
-            //onChangeText={setSubtitle}
             onChangeText={handleChange("subtitle")}
             onBlur={handleBlur("subtitle")}
           />
@@ -102,7 +89,6 @@ export function AddSimplePostScreen({ navigation, route }) {
             placeholder={texts.contentPlaceholder}
             multiline
             numberOfLines={4}
-            //onChangeText={setContent}
             onChangeText={handleChange("content")}
             onBlur={handleBlur("content")}
           />
@@ -114,7 +100,6 @@ export function AddSimplePostScreen({ navigation, route }) {
           <View style={styles.containerButton}>
             <Button
               style={styles.buttonStyle}
-              //onPress={onSubmit}
               onPress={handleSubmit}
             >
               Enviar

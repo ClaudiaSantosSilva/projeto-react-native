@@ -15,12 +15,6 @@ const ButtonText = styled.Text`
   font-weight: bold;
 `;
 
-//const Spinner = styled.ActivityIndicator`
-  //color: white;
-  //font-size: 16px;
-  //`;
-
-
 export function Button ({children, onPress, style={}, isLoading=false }) {
     return ( 
     <ButtonContainer onPress={onPress} style={style} disabled={isLoading}>

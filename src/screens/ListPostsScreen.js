@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { axiosApi } from "../axiosApi";
 import { PostItem } from "../components/PostItem" 
 import { Card } from "../components/Card"
-import Toast from "react-native-root-toast";
 import screens from "../screens.json"
 
 const initialPostsList={
